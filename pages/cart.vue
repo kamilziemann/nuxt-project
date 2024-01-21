@@ -37,7 +37,7 @@ const filteredProducts = computed(() =>
 			<div class="flex flex-col gap-4">
 				<Card
 					type="remove"
-					v-for="(item) in filteredProducts"
+					v-for="item in filteredProducts"
 					:key="item.id"
 					:id="item.id"
 					:title="item.title"
@@ -46,6 +46,8 @@ const filteredProducts = computed(() =>
 					:imageSrc="item.imageSrc"
 				/>
 			</div>
+
+			<p class="text-info mt-4 text-start">Suma: {{ store.totalPrice ?? 0 }} zł</p>
 		</div>
 	</div>
 </template>
