@@ -3,6 +3,7 @@
 		<!-- <NuxtWelcome /> -->
 		<TopNav />
 		<NuxtPage />
+		<Footer />
 	</div>
 </template>
 
@@ -11,3 +12,4 @@ definePageMeta({
 	colorMode: "light",
 });
 </script>
+

@@ -1,6 +1,12 @@
 <script setup>
+import { defineProps } from "vue";
 import { useCartStore } from "@/stores/cart";
+
 const props = defineProps({
+	id: {
+		type: Number,
+		required: true,
+	},
 	title: {
 		type: String,
 		required: true,
@@ -13,10 +19,6 @@ const props = defineProps({
 		type: String,
 		required: true,
 	},
-	buttonText: {
-		type: String,
-		default: "Buy Now",
-	},
 	onClick: {
 		type: Function,
 		required: true,
@@ -25,38 +27,54 @@ const props = defineProps({
 		type: Number,
 		required: true,
 	},
+	type: {
+		type: String,
+		default: "buy", // 'buy' or 'remove'
+	},
 });
 
 const store = useCartStore();
 
-const addToCart = () => {
-	store.addToCart({ title: props.title, description: props.description, price: props.price });
+const isRemoveType = props.type === "remove";
+
+const defaultCardClass = "card bg-base 100 shadow-xl h-full w-full";
+const cardClass = () =>
+	isRemoveType ? `${defaultCardClass} flex-row card-compact` : `${defaultCardClass} card-compact max-w-96`;
+
+const imageClass = () => (isRemoveType ? "max-h-20" : "max-w-60");
+
+const buttonText = () => (isRemoveType ? "Usuń" : "Kup");
+
+const handleButtonClick = () => {
+	if (isRemoveType) {
+		store.removeFromCart(props.id);
+	} else {
+		store.addToCart(props.id);
+	}
 };
 </script>
 
 <template>
-	<div class="card card-compact max-w-96 bg-base-100 shadow-xl">
+	<div :class="cardClass()">
 		<figure>
 			<img
 				:src="imageSrc"
-				alt="Shoes"
-				class="max-w-60"
+				:alt="title"
+				:class="imageClass()"
 			/>
 		</figure>
-		<div class="card-body">
+		<div class="card-body text-start">
 			<h3 class="card-title">{{ title }}</h3>
 			<p class="break-words">{{ description }}</p>
 			<div class="card-actions justify-end items-center">
 				<p class="font-medium">{{ price }} zł</p>
 				<button
-					class="btn btn-primary"
-					@click="addToCart"
+					class="btn btn-primary min-h-8 h-8"
+					@click="handleButtonClick"
 				>
-					Kup
+					{{ buttonText() }}
 				</button>
 			</div>
 		</div>
 	</div>
 </template>
-
-<style scoped></style>
