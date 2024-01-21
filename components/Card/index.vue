@@ -19,10 +19,6 @@ const props = defineProps({
 		type: String,
 		required: true,
 	},
-	onClick: {
-		type: Function,
-		required: true,
-	},
 	price: {
 		type: Number,
 		required: true,

@@ -91,7 +91,7 @@ onBeforeUnmount(() => {
 				class="btn btn-ghost text-xl"
 			>
 				<img
-					src="http://localhost:3000/img/logo.png"
+					src="https://sklep.kfd.pl/img/logo-1652696382.jpg"
 					class="max-w-[50px]"
 					alt="Logo"
 				/>

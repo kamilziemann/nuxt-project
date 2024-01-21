@@ -3,7 +3,7 @@
 <template>
   <div class="page-header mb-0">
     <img
-      src="http://localhost:3000/img/kfd_baner.jpg"
+      src="https://sklep.kfd.pl/modules/ps_imageslider/images/2af9bf291f15bf66a437462eab024c207e02cdeb_kfd_baner_sklep_bialka.jpg"
       class="h-auto max-w-full w-full object-contain"
     />
   </div>
