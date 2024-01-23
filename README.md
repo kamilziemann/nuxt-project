@@ -1,3 +1,5 @@
+// This project is for university studies - as a course requirement.
+
 DEMO LINK: [https://nuxt-project-murex.vercel.app/](https://nuxt-project-murex.vercel.app/)
 
 # Nuxt 3 Minimal Starter
